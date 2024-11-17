@@ -1,26 +1,47 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <div class="progress-examples">
+      <CircleProgress :percentage="percentage" :size="150" />
+      <div class="controls">
+        <label>
+          Процент:
+          <input type="range" min="0" max="100" v-model="percentage" />
+        </label>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import CircleProgress from './components/CircleProgress.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    components: { CircleProgress },
+    data() {
+      return {
+        percentage: 50, // Текущее значение прогресса
+      };
+    },
+  };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .app {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .progress-examples {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .controls {
+    margin-top: 20px;
+  }
+
+  input[type='range'] {
+    width: 300px;
+  }
 </style>
